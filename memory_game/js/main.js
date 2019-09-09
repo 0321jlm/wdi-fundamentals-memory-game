@@ -26,6 +26,7 @@ var cards = [
 
 var cardsInPlay = [];
 var resetButton = document.getElementById('reset');
+var score = 0;
 
 
 function flipCard() {
@@ -53,8 +54,9 @@ function createBoard () {
         
 		cardElement.addEventListener('click', flipCard);
 		document.getElementById('game-board').appendChild(cardElement);
+	}
 }
-}
+
 
 
 
@@ -66,13 +68,18 @@ function checkForMatch () {
 	if(cardsInPlay[0] === cardsInPlay[1]){
 		alert ("You found a match!");
 		cardsInPlay.length = 0;
+		score = score + 1;
+		alert ('Score = ' + score);
 
 	} else {
 		alert ("Sorry. Try again.");
 		cardsInPlay.length = 0;
 		
 	} 
-}
+	
+
+	}
+	
 }
 
 function resetGame () {
@@ -81,7 +88,7 @@ function resetGame () {
 		cardElement.remove();
 		cardsInPlay.length = 0;
 	}
-	
+	score = 0;
 	createBoard();
 }
   	
